@@ -1,6 +1,2 @@
-# Authorization
-
-Before starting, run: 
-```sh
-npm i
-```
+# IntegrationSDK
+The description of processes and code examples for integration with Telestore API.
