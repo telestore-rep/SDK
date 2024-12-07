@@ -1,0 +1,39 @@
+{
+  "name": "@telestore/integration-sdk",
+  "version": "1.0.0",
+  "type": "commonjs",
+  "main": "dist/telestore_sdk.js",
+  "repository": {
+    "type:": "git",
+    "url": "git+https://github.com/telestore-rep/IntegrationSDK.git"
+  },
+  "scripts": {
+    "build": "vite build"
+  },
+  "files": [
+    "dist/*"
+  ],
+  "keywords": [],
+  "author": "",
+  "types": "./dist/telestore_sdk.d.ts",
+  "license": "Apache-2.0",
+  "description": "Telestore SDK package",
+  "dependencies": {
+    "@itbuild/auth.proxy": "^1.0.1",
+    "@itbuild/trex.wallet": "^1.0.3"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "devDependencies": {
+    "@types/elliptic": "^6.4.18",
+    "@types/node": "^22.9.1",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.11",
+    "vite-plugin-dts": "^4.3.0"
+  },
+  "bugs": {
+    "url": "https://github.com/telestore-rep/IntegrationSDK/issues"
+  },
+  "homepage": "https://github.com/telestore-rep/IntegrationSDK/blob/main/JS/authentication/README.md"
+}
