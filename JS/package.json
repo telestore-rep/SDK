@@ -14,7 +14,7 @@
     "dist/*"
   ],
   "keywords": [],
-  "author": "",
+  "author": "telestore",
   "types": "./dist/telestore_sdk.d.ts",
   "license": "Apache-2.0",
   "description": "Telestore SDK package",
