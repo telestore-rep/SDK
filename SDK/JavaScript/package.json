@@ -19,8 +19,9 @@
   "license": "Apache-2.0",
   "description": "Telestore SDK package",
   "dependencies": {
-    "@itbuild/auth.proxy": "^1.0.2",
-    "@itbuild/trex.wallet": "^1.0.4"
+    "@itbuild/auth.proxy": "^1.0.4",
+    "@itbuild/trex.wallet": "^1.0.7",
+    "eventsource": "^3.0.1"
   },
   "engines": {
     "node": ">=14.0.0"
