@@ -5,7 +5,7 @@
 ### Obtaining a new session
 
 ```ts
-var teleStoreClient = new TeleStoreClient(<YOUR_USER_KEY>);
+var teleStoreClient = new TeleStoreClient(<YOUR_USER_KEY>); // Your user key from https://web.tele.store
 
 const isConnected: boolean = teleStoreClient.Connect();
 ```
@@ -19,9 +19,9 @@ const getNewInvoiceLink = async (amount: number, partnerInfo: number, tag: strin
   const response = await teleStoreClient.CreateInvoice({
     amount: amount,
     currency: "TeleUSD",
-    externalID: <YOUR_APP_ID>,
-    partnerInfo: partnerInfo,
-    tag: tag
+    externalID: <YOUR_APP_ID>, // Your application ID from https://web.tele.store
+    partnerInfo: partnerInfo,  // User ID from your app
+    tag: tag                   // Info about bought item
   });
 
   if (response.error || !response.result) {
@@ -40,7 +40,7 @@ Navigate user to **link** from received object
 
 ```ts
 const handleInvoiceFunction = async (invoice: HistoryTransaction) => {
-  /* Your invoice handler code */
+  console.log(invoice);
 }
 
 const lastProcessedId: string | null = null; /* Last proccessed by your app invoice */
