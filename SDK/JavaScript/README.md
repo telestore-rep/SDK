@@ -5,7 +5,9 @@
 ### Obtaining a new session
 
 ```ts
-var teleStoreClient = new TeleStoreClient(<YOUR_USER_KEY>); // Your user key from https://web.tele.store
+// First parameter - your user key from https://web.tele.store
+// Second parameter - development mode, true or false
+var teleStoreClient = new TeleStoreClient(<YOUR_USER_KEY>, true); 
 
 const isConnected: boolean = teleStoreClient.Connect();
 ```
