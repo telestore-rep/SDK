@@ -18,7 +18,7 @@ export class TeleStoreClient {
   constructor(userKey: string, isDev: boolean = false) {
     this.UserKey = userKey;
     this.BaseUrl = isDev
-      ? "https://dev.tele.store:8081/"
+      ? "https://telestore.itbuild.app:8081/"
       : "https://web.tele.store/";
 
     const authProxyClient = new AuthProxyClient(this.BaseUrl);
