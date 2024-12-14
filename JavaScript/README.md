@@ -21,7 +21,7 @@ const getNewInvoiceLink = async (amount: number, partnerInfo: number, tag: strin
   const response = await teleStoreClient.CreateInvoice({
     amount: amount,
     currency: "TeleUSD",
-    externalID: <YOUR_APP_ID>, // Your application ID from https://web.tele.store
+    appId: <YOUR_APP_ID>,      // Your application ID from https://web.tele.store
     partnerInfo: partnerInfo,  // User ID from your app
     tag: tag                   // Info about bought item
   });
@@ -29,7 +29,7 @@ const getNewInvoiceLink = async (amount: number, partnerInfo: number, tag: strin
   if (response.error || !response.result) {
       throw; // Your error handling
   }
-  
+
   return respose.result.url;
 }
 
