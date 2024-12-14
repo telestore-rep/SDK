@@ -236,19 +236,3 @@ export class TeleStoreClient {
     }
   };
 }
-
-var teleStoreClient = new TeleStoreClient("")
-
-const response = await teleStoreClient.CreateInvoice({
-  amount: 20,
-  currency: "TeleUSD",
-  appId: 123,          // Your application ID from https://web.tele.store
-  partnerInfo: "",     // User ID from your app
-  tag: ""              // Info about bought item
-});
-
-if (response.error || !response.result) {
-    throw; // Your error handling
-}
-
-return respose.result.url;
