@@ -7,9 +7,9 @@
 ```ts
 // First parameter - your user key from https://web.tele.store
 // Second parameter - development mode, true or false
-var teleStoreClient = new TeleStoreClient(<YOUR_USER_KEY>, true); 
+const teleStoreClient = new TeleStoreClient(`<YOUR_USER_KEY>`, true); 
 
-const isConnected: boolean = teleStoreClient.Connect();
+const isConnected: boolean = await teleStoreClient.Connect();
 ```
 
 ## Wallet usage
@@ -27,15 +27,15 @@ const getNewInvoiceLink = async (amount: number, partnerInfo: number, tag: strin
   }, true); // By default, telestore will redirect user to your app after payment, if you want to avoid this, set to false
 
   if (response.error || !response.result) {
-      throw; // Your error handling
+      throw response.error || !response.result; // Your error handling
   }
 
-  return respose.result.url;
+  return response.result.link;
 }
 
 // result example
 // https://web.tele.store/shop?invoice=ISDW2JF3AFSTP&redirect=true
-const navigateUrl = await getNewInvoiceLink(20, <YOUR_USER_ID>, <BOUGHT_ITEM_INFO>);
+const navigateUrl = await getNewInvoiceLink(20, `<YOUR_USER_ID>`, `<BOUGHT_ITEM_INFO>`);
 ```
 
 Navigate user to **link** from received object
