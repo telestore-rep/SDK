@@ -4,6 +4,6 @@ SDK to link your application with tele.store
 
 ### Supported languages
 
-- [JavaSctipt/TypeScript](./JavaScript/README.md)
+- [JavaScript/TypeScript](./JavaScript/README.md)
 
 Other languages will be added later
