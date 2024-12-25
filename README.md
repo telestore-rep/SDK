@@ -62,3 +62,44 @@ User key is generated on the client's side and is never stored on our side and i
 ![bot start](https://github.com/telestore-rep/SDK/blob/main/resources/images/user_key.webp?raw=true)
 
 Now you can use the key to login or for the authentication via SDK.
+
+# How to Get a Developer Status?
+
+_(it advised to use desktop for the following, since the Developer Panel is better suited for big screens)_
+
+Log in into the web-version (you can use the user key).
+
+Click the key pictogram to enter the user key mode:
+
+![bot start](https://github.com/telestore-rep/SDK/blob/main/resources/images/ts_login.webp?raw=true)
+
+Enter the previously generated user key:
+
+![bot start](https://github.com/telestore-rep/SDK/blob/main/resources/images/ts_login_uk.webp?raw=true)
+
+Got to the `Profile` page and press `Join as Developer` link:
+
+![bot start](https://github.com/telestore-rep/SDK/blob/main/resources/images/profile_join.webp?raw=true)
+
+Enter the data about your company and yourself:
+
+![bot start](https://github.com/telestore-rep/SDK/blob/main/resources/images/dev_data.webp?raw=true)
+
+After that you will need to go to `Developer Panel`.
+
+You can find the link to `Developer Panel` in the bottom of the `Profile` page:
+
+![bot start](https://github.com/telestore-rep/SDK/blob/main/resources/images/ts_dev_panel_link.webp?raw=true)
+
+You can add new app with the `Add new game` button:
+
+![bot start](https://github.com/telestore-rep/SDK/blob/main/resources/images/ts_dev_panel.webp?raw=true)
+
+Enter the necessary data and save the changes:
+
+![bot start](https://github.com/telestore-rep/SDK/blob/main/resources/images/ts_game_edit.webp?raw=true)
+
+When saved, the game will be on moderation:
+![bot start](https://github.com/telestore-rep/SDK/blob/main/resources/images/ts_game_edit_success.webp?raw=true)
+
+After moderation, the app will be available in the TeleStore catalogue.
