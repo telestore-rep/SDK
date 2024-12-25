@@ -65,7 +65,7 @@ Now you can use the key to login or for the authentication via SDK.
 
 # How to Get a Developer Status?
 
-_(it advised to use desktop for the following, since the Developer Panel is better suited for big screens)_
+_(it is advised to use the desktop for the following steps, since the Developer Panel is better suited for a big screen)_
 
 Log in into the web-version (you can use the user key).
 
