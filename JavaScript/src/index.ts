@@ -169,17 +169,17 @@ export class TeleStoreClient {
   private async HandleMessage(message: unknown, funcs: SubscribeFuncs): Promise<void> {
     if (!message) return;
 
-    var object = message as { mess_type: number, txs: number[] }
+    var object = message as {mess_type: number, obj: { txs: number[] }}
 
     switch (object?.mess_type) {
       case 6:
         const interval = setInterval(async () => {
-          if (object.txs.length === 0) {
+          if (object.obj.txs.length === 0) {
             clearInterval(interval);
             return;
           }
 
-          const txId = object.txs.shift();
+          const txId = object.obj.txs.shift();
           const response = await this.Wallet.GetTransactionInfo({ id: txId });
 
           if (!response.error && response.result) {
