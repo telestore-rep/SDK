@@ -3,6 +3,7 @@ import { TrexWalletClient } from '@itbuild/trex.wallet';
 import { ApiResponse, ApiResponseExt, AppUsage, GetStatisticsParams, HistoryTransaction, InvoiceParams, SubscribeFuncs, TxCode } from './model';
 import { objectToQueryParams } from './helpers/objectToQueryParams';
 
+export * from "./model";
 export class TeleStoreClient {
   public readonly UserKey: string = null;
   public readonly Auth: AuthProxyClient = null;
