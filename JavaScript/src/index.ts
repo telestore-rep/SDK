@@ -206,7 +206,9 @@ export class TeleStoreClient {
     };
 
     try {
-      const response = await fetch(this.BaseUrl + url, {
+      var response: Response;
+
+      response = await fetch(this.BaseUrl + url, {
         credentials: "include",
         ...init,
         headers: {
@@ -215,6 +217,20 @@ export class TeleStoreClient {
           ...(this.Auth.GetSessionId() ? { Cookie: `sid=${this.Auth.GetSessionId()}` } : {})
         }
       });
+
+      if (response.status === 401) {
+        await this.Connect();
+
+        response = await fetch(this.BaseUrl + url, {
+          credentials: "include",
+          ...init,
+          headers: {
+            ...defaultHeaders,
+            ...init.headers,
+            ...(this.Auth.GetSessionId() ? { Cookie: `sid=${this.Auth.GetSessionId()}` } : {})
+          }
+        });
+      }
 
       if (response.ok) {
         response.headers.forEach((value, key) => {
