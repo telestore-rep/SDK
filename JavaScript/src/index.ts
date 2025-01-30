@@ -1,7 +1,17 @@
 import { AuthProxyClient } from '@itbuild/auth.proxy';
 import { TrexWalletClient } from '@itbuild/trex.wallet';
-import { ApiResponse, ApiResponseExt, AppUsage, GetStatisticsParams, HistoryTransaction, InvoiceParams, SubscribeFuncs, TxCode } from './model';
 import { objectToQueryParams } from './helpers/objectToQueryParams';
+import {
+  ApiResponse,
+  ApiResponseExt,
+  AppUsage,
+  GetStatisticsParams,
+  HistoryTransaction,
+  InvoiceParams,
+  SubscribeFuncs,
+  TxCode,
+  NotifyMessType
+} from './model';
 
 export * from "./model";
 export class TeleStoreClient {
@@ -58,7 +68,7 @@ export class TeleStoreClient {
   /**
    * Create new invoice
    * @param params - ivoice params
-   * @param redirect - url to redirect user after payment
+   * @param redirect - required to redirect user back to your app
    * @returns object of {@link TxCode} interface
    * @example link `https://web.tele.store/shop?invoice=ISDW2JF3AFST0&redirect=true`
    */
@@ -84,7 +94,8 @@ export class TeleStoreClient {
   }
 
   /**
-   * Subscribe app to server EventSource
+   * Subscribe app to server EventSource.
+   * Possible events {@link NotifyMessType}
    * @returns `true` on subscribe success
    * @returns `false` on error
    */
