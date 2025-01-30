@@ -5,7 +5,6 @@ import { objectToQueryParams } from './helpers/objectToQueryParams';
 
 export * from "./model";
 export class TeleStoreClient {
-  public readonly UserKey: string = null;
   public readonly Auth: AuthProxyClient = null;
   public readonly Wallet: TrexWalletClient = null;
 
@@ -17,12 +16,11 @@ export class TeleStoreClient {
    * @param isDev - run dev mode on `true`
    */
   constructor(userKey: string, isDev: boolean = false) {
-    this.UserKey = userKey;
     this.BaseUrl = isDev
       ? "https://dev.tele.store:8081/"
       : "https://web.tele.store/";
 
-    const authProxyClient = new AuthProxyClient(this.BaseUrl);
+    const authProxyClient = new AuthProxyClient(userKey, this.BaseUrl);
 
     this.Auth = authProxyClient;
     this.Wallet = new TrexWalletClient(authProxyClient);
@@ -34,9 +32,7 @@ export class TeleStoreClient {
    * @returns `false` on error
    */
   public async Connect(): Promise<boolean> {
-    const response = await this.Auth.SignInUserKey(this.UserKey);
-
-    return !response.error && response.result !== 'Failure';
+    return await this.Auth.Connect();
   }
 
   /**
@@ -169,7 +165,7 @@ export class TeleStoreClient {
   private async HandleMessage(message: unknown, funcs: SubscribeFuncs): Promise<void> {
     if (!message) return;
 
-    var object = message as {mess_type: number, obj: { txs: number[] }}
+    var object = message as { mess_type: number, obj: { txs: number[] } }
 
     switch (object?.mess_type) {
       case 6:
@@ -206,9 +202,7 @@ export class TeleStoreClient {
     };
 
     try {
-      var response: Response;
-
-      response = await fetch(this.BaseUrl + url, {
+      const request = fetch(this.BaseUrl + url, {
         credentials: "include",
         ...init,
         headers: {
@@ -218,18 +212,13 @@ export class TeleStoreClient {
         }
       });
 
+      var response = await request;
+
+      // Try to reconnect on 401
       if (response.status === 401) {
         await this.Connect();
 
-        response = await fetch(this.BaseUrl + url, {
-          credentials: "include",
-          ...init,
-          headers: {
-            ...defaultHeaders,
-            ...init.headers,
-            ...(this.Auth.GetSessionId() ? { Cookie: `sid=${this.Auth.GetSessionId()}` } : {})
-          }
-        });
+        response = await request;
       }
 
       if (response.ok) {
