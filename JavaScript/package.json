@@ -1,6 +1,6 @@
 {
   "name": "@telestore/integration-sdk",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "type": "commonjs",
   "main": "dist/telestore_sdk.js",
   "repository": {
