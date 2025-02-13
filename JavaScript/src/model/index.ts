@@ -1,3 +1,5 @@
+import { GetTransactionHistoryParams, HistoryTransaction } from "@itbuild/trex.wallet";
+
 export interface ErrorObject {
   code?: number;
   readonly message?: string | null;
@@ -163,25 +165,6 @@ export enum TransactTypeEnum {
   RewardPayment = 18,
   ExchangeFromBroker = 20,
   CrossProjectSelfTransfer = 21,
-}
-
-export interface HistoryTransaction {
-  address_tx_data?: AddressTxData;
-  amount?: string | null;
-  balance?: number;
-  currency?: string | null;
-  datetime?: string;
-  fee?: string | null;
-  id_transaction?: string | null;
-  is_income?: boolean;
-  next_key?: string | null;
-  partner_info?: string | null;
-  result_amount?: number;
-  status?: TransactStateEnum;
-  status_text?: string | null;
-  tag?: string | null;
-  tx_type?: TransactTypeEnum;
-  tx_type_text?: string | null;
 }
 
 export enum NotifyMessType

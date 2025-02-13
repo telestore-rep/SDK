@@ -14,6 +14,22 @@ const isConnected: boolean = await teleStoreClient.Connect();
 
 ## Wallet usage
 
+### Receiveing transaction history
+
+```ts
+const txHistory = await teleStoreClient.GetTransactionHistory({
+  currencies: ["TeleUSD"],
+  
+  // Date format: YYYY-MM-DD
+  start: "2025-05-10", // Start date (without time) of UTC search, if not specified - then 90 days from end.
+  end: "2024-05-10", // The final date (without time) of the UTC sample, if not specified, then the current one.
+
+  limit: 10, // Number of transactions in the output, by default 10, but not more than 100
+  next_key: null, // After what identifier (deep into history) to continue the selection (for lazy loading)
+  tx_types: [13, 14] // Transacion type
+});
+```
+
 ### Creating invoice for user example
 
 ```ts
@@ -47,14 +63,14 @@ const handleInvoiceFunction = async (invoice: HistoryTransaction) => {
   console.log(invoice);
 }
 
-const lastProcessedId: string | null = null; /* Last proccessed by your app invoice */
+const lastProcessedId: string | null = null; /* Last proccessed by your app invoice transaction */
 
 const isSuccess = teleStoreClient.StartMonitoring({
   handleInvoiceUpdate: handleInvoiceFunction,
-}, lastProcessedId);
+}, lastProcessedId); // lastProcessedId is required to process all unprocessed transactions, before monitoring begins.
 ```
 
-### Сreate new invoices after successfully start of monitoring service
+**Сreate new invoices only after successfully start of monitoring service**
 
 ### Receiveng info about success payment
 
