@@ -264,17 +264,3 @@ export class TeleStoreClient {
     }
   };
 }
-
-var a = new TeleStoreClient(null);
-
-a.GetTransactionHistory({
-  currencies: ["TeleUSD"],
-  
-  // Date format: YYYY-MM-DD
-  start: "2025-05-10", // Start date (without time) of UTC search, if not specified - then 90 days from end.
-  end: "2024-05-10", // The final date (without time) of the UTC sample, if not specified, then the current one.
-
-  limit: 10, // Number of transactions in the output, by default 10, but not more than 100
-  next_key: null, // After what identifier (deep into history) to continue the selection (for lazy loading)
-  tx_types: [13, 14] // Transacion type
-});
