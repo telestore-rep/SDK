@@ -70,7 +70,7 @@ export class TeleStoreClient {
    * @param params - ivoice params
    * @param redirect - required to redirect user back to your app
    * @returns object of {@link TxCode} interface
-   * @example link `https://web.tele.store/shop?invoice=ISDW2JF3AFST0&redirect=true`
+   * @example link `https://web.tele.store/redirectPage.html?invoice=ISDW2JF3AFST0&redirect=true`
    */
   public async CreateInvoice(params: InvoiceParams, redirect: boolean = true): Promise<ApiResponse<TxCode>> {
     const response = await this.ApiRequest<TxCode>(
@@ -88,7 +88,7 @@ export class TeleStoreClient {
     return {
       result: {
         ...response.result,
-        link: `${this.BaseUrl}shop?invoice=${response.result.code}&redirect=${redirect}`
+        link: `${this.BaseUrl}/redirectPage.html?invoice=${response.result.code}&redirect=${redirect}`
       }
     };
   }
