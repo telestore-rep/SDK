@@ -1,6 +1,6 @@
 {
   "name": "@telestore/integration-sdk",
-  "version": "1.0.20",
+  "version": "1.0.21",
   "type": "commonjs",
   "main": "dist/telestore_sdk.js",
   "repository": {
@@ -19,8 +19,8 @@
   "license": "Apache-2.0",
   "description": "Telestore SDK package",
   "dependencies": {
-    "@itbuild/auth.proxy": "^1.0.15",
-    "@itbuild/trex.wallet": "^1.0.19",
+    "@itbuild/auth.proxy": "^1.0.17",
+    "@itbuild/trex.wallet": "^1.0.20",
     "eventsource": "^3.0.1"
   },
   "engines": {

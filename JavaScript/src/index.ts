@@ -38,11 +38,12 @@ export class TeleStoreClient {
 
   /**
    * Create new session
+   * @param force create session even if session is active
    * @returns `true` on success
    * @returns `false` on error
    */
-  public async Connect(): Promise<boolean> {
-    return await this.Auth.Connect();
+  public async Connect(force: boolean = false): Promise<boolean> {
+    return await this.Auth.Connect(force);
   }
 
   /**
@@ -88,7 +89,7 @@ export class TeleStoreClient {
     return {
       result: {
         ...response.result,
-        link: `${this.BaseUrl}/redirectPage.html?invoice=${response.result.code}&redirect=${redirect}`
+        link: `${this.BaseUrl}redirectPage.html?invoice=${response.result.code}&redirect=${redirect}`
       }
     };
   }
@@ -236,7 +237,7 @@ export class TeleStoreClient {
 
       // Try to reconnect on 401
       if (response.status === 401) {
-        await this.Connect();
+        await this.Connect(true);
 
         response = await request;
       }
