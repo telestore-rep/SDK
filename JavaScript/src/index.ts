@@ -54,7 +54,7 @@ export class TeleStoreClient {
    */
   public async GetStatistics(params: GetStatisticsParams): Promise<ApiResponse<AppUsage[]>> {
     return await this.ApiRequest<AppUsage[]>(
-      `api/v1/GetStatistics${objectToQueryParams(params)}`,
+      `api/v1/get_statistics${objectToQueryParams(params)}`,
       {
         method: "GET",
         credentials: "include",

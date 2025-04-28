@@ -23,7 +23,7 @@ export type GetStatisticsParams = {
   /**
    * app ID, if present will return data for one app only
    */
-  app?: number;
+  app?: string;
   /**
    * start of the period to include in the list, default — week ago
    */
@@ -37,9 +37,9 @@ export type GetStatisticsParams = {
 export interface InvoiceParams {
   amount: number;
   currency?: string;
-  appId: number;
-  partnerInfo?: string
-  tag?: string
+  appId: string;
+  partnerInfo?: string;
+  tag?: string;
 }
 
 export enum CodeTypeEnum {
@@ -72,7 +72,7 @@ export interface TxCode {
 }
 
 export interface AppUsage {
-  app?: number;
+  app: string;
   /** @nullable */
   date_use?: string | null;
   /** @nullable */
@@ -83,7 +83,7 @@ export interface AppUsage {
   medium_img?: string | null;
   /** @nullable */
   small_img?: string | null;
-  teleuser?: number;
+  teleuser: string;
 }
 
 export enum OriginalStatusEnum {
