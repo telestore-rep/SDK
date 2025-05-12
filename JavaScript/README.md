@@ -50,7 +50,7 @@ const getNewInvoiceLink = async (amount: number, partnerInfo: number, tag: strin
 }
 
 // result example
-// https://web.tele.store/redirectPage.html?invoice=ISDW2JF3AFSTP&redirect=true
+// https://web.tele.store/redirect.html?invoice=ISDW2JF3AFSTP&redirect=true
 const navigateUrl = await getNewInvoiceLink(20, `<YOUR_USER_ID>`, `<BOUGHT_ITEM_INFO>`);
 ```
 
