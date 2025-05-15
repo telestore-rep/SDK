@@ -19,7 +19,7 @@ export type GetStatisticsParams = {
   /**
    * the number of last apps to list
    */
-  lastAppsUsed?: number;
+  last_apps_used?: number;
   /**
    * app ID, if present will return data for one app only
    */
@@ -37,8 +37,8 @@ export type GetStatisticsParams = {
 export interface InvoiceParams {
   amount: number;
   currency?: string;
-  appId: string;
-  partnerInfo?: string;
+  app_id: string;
+  partner_info?: string;
   tag?: string;
 }
 
