@@ -37,7 +37,7 @@ const getNewInvoiceLink = async (amount: number, partnerInfo: number, tag: strin
   const response = await teleStoreClient.CreateInvoice({
     amount: amount,
     currency: "TeleUSD",
-    appId: <YOUR_APP_ID>,      // Your application ID from https://web.tele.store
+    app_id: <YOUR_APP_ID>,     // Your application ID from https://web.tele.store
     partnerInfo: partnerInfo,  // User ID from your app
     tag: tag                   // Info about bought item
   }, true); // By default, telestore will redirect user to your app after payment, if you want to avoid this, set to false
