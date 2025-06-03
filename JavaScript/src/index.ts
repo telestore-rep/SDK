@@ -186,7 +186,7 @@ export class TeleStoreClient {
   private async HandleMessage(message: unknown, funcs: SubscribeFuncs): Promise<void> {
     if (!message) return;
 
-    var object = message as { mess_type: number, obj: { txs: number[] } }
+    var object = message as { mess_type: number, obj: { txs: string[] } }
 
     switch (object?.mess_type) {
       case 6:
@@ -223,7 +223,7 @@ export class TeleStoreClient {
     };
 
     try {
-      const request = fetch(this.BaseUrl + url, {
+      var response = await fetch(this.BaseUrl + url, {
         credentials: "include",
         ...init,
         headers: {
@@ -233,13 +233,19 @@ export class TeleStoreClient {
         }
       });
 
-      var response = await request;
-
       // Try to reconnect on 401
       if (response.status === 401) {
         await this.Connect(true);
 
-        response = await request;
+        response = await fetch(this.BaseUrl + url, {
+          credentials: "include",
+          ...init,
+          headers: {
+            ...defaultHeaders,
+            ...init.headers,
+            ...(this.Auth.GetSessionId() ? { Cookie: `sid=${this.Auth.GetSessionId()}` } : {})
+          }
+        });
       }
 
       if (response.ok) {
