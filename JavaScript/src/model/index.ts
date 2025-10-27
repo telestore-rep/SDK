@@ -34,7 +34,7 @@ export type GetStatisticsParams = {
   end?: string;
 };
 
-export interface InvoiceParams {
+export interface OrderParams {
   amount: number;
   currency?: string;
   app_id: string;

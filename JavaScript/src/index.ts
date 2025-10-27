@@ -6,7 +6,7 @@ import {
   ApiResponseExt,
   AppUsage,
   GetStatisticsParams,
-  InvoiceParams,
+  OrderParams,
   SubscribeFuncs,
   TxCode,
   NotifyMessType
@@ -73,7 +73,7 @@ export class TeleStoreClient {
    * @returns object of {@link TxCode} interface
    * @example link `https://web.tele.store/redirect.html?invoice=ISDW2JF3AFST0&redirect=true`
    */
-  public async CreateInvoice(params: InvoiceParams, redirect: boolean = true): Promise<ApiResponse<TxCode>> {
+  public async CreateInvoice(params: OrderParams, redirect: boolean = true): Promise<ApiResponse<TxCode>> {
     const response = await this.ApiRequest<TxCode>(
       `api/v1/create_invoice`,
       {
@@ -90,6 +90,33 @@ export class TeleStoreClient {
       result: {
         ...response.result,
         link: `${this.BaseUrl}redirect.html?invoice=${response.result.code}&redirect=${redirect}`
+      }
+    };
+  }
+
+  /**
+   * Create new payment order
+   * @param params - order params
+   * @returns object of {@link TxCode} interface
+   * @example link `https://web.tele.store/pay?code=6RM6BGJ8WXEYS`
+   */
+  public async CreatePaymentOrder(params: OrderParams): Promise<ApiResponse<TxCode>> {
+    const response = await this.ApiRequest<TxCode>(
+      `api/v1/payment/put_payment_order`,
+      {
+        method: "POST",
+        body: JSON.stringify(params)
+      }
+    );
+
+    if (response.error || !response.result) {
+      return response;
+    }
+
+    return {
+      result: {
+        ...response.result,
+        link: `${this.BaseUrl}pay?code=${response.result.code}`
       }
     };
   }
