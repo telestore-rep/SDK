@@ -30,15 +30,41 @@ const txHistory = await teleStoreClient.GetTransactionHistory({
 });
 ```
 
+### Example of payment order creation
+
+```ts
+const getPaymentOrderLink = async (amount: number, partnerInfo: string, tag: string, currency: string = "TeleUSD") => {
+  const response = await teleStoreClient.CreatePaymentOrder({
+    amount: amount,
+    currency: currency,
+    app_id: <YOUR_APP_ID>,     // Your application ID from https://web.tele.store
+    partner_info: partnerInfo,  // User ID from your app
+    tag: tag                   // Info about bought item
+  });
+
+  if (response.error || !response.result) {
+      throw response.error || !response.result; // Your error handling
+  }
+
+  return response.result.link;
+}
+
+// result example
+// https://web.tele.store/pay?code=6RM6BGJ8WXEYS
+const navigateUrl = await getPaymentOrderLink(20, `<YOUR_USER_ID>`, `<BOUGHT_ITEM_INFO>`);
+```
+
+Navigate user to **link** from received object
+
 ### Creating invoice for user example
 
 ```ts
-const getNewInvoiceLink = async (amount: number, partnerInfo: number, tag: string) => {
+const getNewInvoiceLink = async (amount: number, partnerInfo: string, tag: string) => {
   const response = await teleStoreClient.CreateInvoice({
     amount: amount,
     currency: "TeleUSD",
     app_id: <YOUR_APP_ID>,     // Your application ID from https://web.tele.store
-    partnerInfo: partnerInfo,  // User ID from your app
+    partner_info: partnerInfo,  // User ID from your app
     tag: tag                   // Info about bought item
   }, true); // By default, telestore will redirect user to your app after payment, if you want to avoid this, set to false
 
