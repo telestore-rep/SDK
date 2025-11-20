@@ -115,7 +115,10 @@ export class TeleStoreClient {
     }
 
     return {
-      result: response.result
+      result: {
+        ...response.result,
+        link: `${this.BaseUrl}pay?code=${response.result.code}`
+      }
     };
   }
 
