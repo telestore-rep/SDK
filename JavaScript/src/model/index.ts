@@ -71,6 +71,12 @@ export interface TxCode {
   typeTx?: CodeTypeEnum;
 }
 
+export interface PaymentOrder {
+  tx_id: string;
+  code: string;
+  link: string;
+}
+
 export interface AppUsage {
   app: string;
   /** @nullable */
@@ -167,26 +173,25 @@ export enum TransactTypeEnum {
   CrossProjectSelfTransfer = 21,
 }
 
-export enum NotifyMessType
-{
-    None,
-    // Simple message
-    SimpleMess = 1,
-    // New incoming transaction
-    TxInWallet = 2,
-    // A group of transactions (more than one) within a short time period for the same currency
-    TxInWalletGroup = 3,
-    // A group of transactions (more than one) within a short time period for different currencies
-    TxInWalletGroupDiff = 4,
-    // An unfinished incoming transaction changed its status
-    TxIncomeChanged = 5,
-    // An unfinished account transaction changed its status
-    TxInvoiceChanged = 6,
-    // An exchange order changed its status or the remaining amount
-    OrderChanged = 7,
-    // New messages in chats
-    NewChatMessage = 10,
+export enum NotifyMessType {
+  None,
+  // Simple message
+  SimpleMess = 1,
+  // New incoming transaction
+  TxInWallet = 2,
+  // A group of transactions (more than one) within a short time period for the same currency
+  TxInWalletGroup = 3,
+  // A group of transactions (more than one) within a short time period for different currencies
+  TxInWalletGroupDiff = 4,
+  // An unfinished incoming transaction changed its status
+  TxIncomeChanged = 5,
+  // An unfinished account transaction changed its status
+  TxInvoiceChanged = 6,
+  // An exchange order changed its status or the remaining amount
+  OrderChanged = 7,
+  // New messages in chats
+  NewChatMessage = 10,
 
-    // Security notification
-    Security = 200,
+  // Security notification
+  Security = 200,
 }

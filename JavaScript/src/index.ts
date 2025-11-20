@@ -9,6 +9,7 @@ import {
   OrderParams,
   SubscribeFuncs,
   TxCode,
+  PaymentOrder,
   NotifyMessType
 } from './model';
 
@@ -97,11 +98,11 @@ export class TeleStoreClient {
   /**
    * Create new payment order
    * @param params - order params
-   * @returns object of {@link TxCode} interface
+   * @returns object of {@link PaymentOrder} interface
    * @example link `https://web.tele.store/pay?code=6RM6BGJ8WXEYS`
    */
-  public async CreatePaymentOrder(params: OrderParams): Promise<ApiResponse<TxCode>> {
-    const response = await this.ApiRequest<TxCode>(
+  public async CreatePaymentOrder(params: OrderParams): Promise<ApiResponse<PaymentOrder>> {
+    const response = await this.ApiRequest<PaymentOrder>(
       `api/v1/payment/put_payment_order`,
       {
         method: "POST",
@@ -114,10 +115,7 @@ export class TeleStoreClient {
     }
 
     return {
-      result: {
-        ...response.result,
-        link: `${this.BaseUrl}pay?code=${response.result.code}`
-      }
+      result: response.result
     };
   }
 
