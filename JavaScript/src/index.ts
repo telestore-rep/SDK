@@ -168,7 +168,7 @@ export class TeleStoreClient {
       limit: 100,
       tx_types: [13, 14],
       currencies: ["TeleUSD"],
-      next_key: lastInvoiceId,
+      end_tick: lastInvoiceId,
     });
 
     if (response.error) {
