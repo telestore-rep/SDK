@@ -38,6 +38,8 @@ export interface OrderParams {
   amount: number;
   currency?: string;
   app_id: string;
+
+  external_id?: string;
   partner_info?: string;
   tag?: string;
 }
